@@ -47,22 +47,3 @@ explore: views_with_playback_start {
     sql_on: ${views_with_playback_start.view_id} = ${datazoom_raw.view_id} ;;
   }
 }
-
-explore: viewing_users {
-  join: datazoom_raw {
-    type: left_outer
-    sql_on: ${viewing_users.user_id} = ${datazoom_raw.device_id} ;;
-    relationship: many_to_one
-  }
-}
-
-explore: affinity {
-  label: "Affinity Analysis"
-
-  always_filter: {
-    filters: {
-      field: affinity.content_b
-      value: "-NULL"
-    }
-  }
-}
